@@ -1,0 +1,292 @@
+@import url(main.css);
+@font-face {
+  font-family: "fontawesome";
+  src: url(font/webfonts/fa-solid-900.ttf);
+}
+.active {
+  color: var(--color-primary) !important;
+  transiton: all 0.4s;
+}
+.active:hover {
+  color: var(--color-primary-light) !important;
+}
+nav {
+  position: fixed;
+  right: 2rem;
+  top: 3rem;
+  z-index: 200;
+  height: 6rem;
+  width: 6rem;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+}
+nav ul {
+  transition: all 0.3s ease-in;
+  list-style: none;
+  width: 25rem;
+  background: white;
+  position: absolute;
+  top: 100%;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: 1px solid #eee;
+  overflow: hidden;
+  z-index: 150;
+  right: 100%;
+}
+nav .fa-bars {
+  font-size: 2.5rem;
+}
+nav li {
+  padding: 1rem 2rem;
+  color: #555;
+  width: 100%;
+}
+nav li:hover {
+  background: #222;
+  color: #fff;
+}
+nav a {
+  color: inherit;
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+}
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100cvh;
+  width: 100vw;
+}
+.background video {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  /* filter: saturate(200% ) brightness(80%); */
+  object-position: center;
+}
+.category {
+  position: fixed;
+  bottom: 0%;
+  left: 0%;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.4);
+  width: 100vw;
+  z-index: 100;
+}
+.category ul {
+  list-style: none;
+}
+.category li {
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  margin: 0 5rem;
+  justify-content: center;
+  width: 25rem;
+  height: 25rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+}
+.category a {
+  color: black;
+  flex-direction: column;
+}
+.category .fa {
+  font-size: 8rem;
+  color: var(--color-primary-light);
+}
+
+/* main page */
+header {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
+    url(../img/phoneshot.jpeg) center;
+  height: 60rem;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+}
+header .logo-box {
+  height: 15rem;
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+}
+.logo-box img {
+  height: 100%;
+}
+.header-top {
+  position: fixed;
+  top: 0;
+  padding: 2rem 0;
+  width: 100%;
+  left: 0;
+  transition: all 0.3s;
+}
+.header-top ul {
+  list-style: none;
+  left: 0;
+  z-index: 1000;
+}
+.header-top li {
+  margin: 0 5rem;
+  color: #fff;
+}
+.header-top a {
+  font-size: 2rem;
+  color: currentColor;
+  height: 100%;
+  transition: all 0.3s;
+  width: 100%;
+  font-size: 6rem;
+  flex-direction: column;
+}
+.header-top .fa {
+  color: currentColor;
+}
+main {
+  /* background: black; */
+  padding: 7rem 0;
+  min-height: calc(100vh - 15rem);
+  margin: 5rem auto;
+  flex-direction: column;
+  justify-content: unset !important;
+  margin-top: 28rem;
+  position: relative;
+  width: 80vw;
+  background: white;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.gallery-name {
+  width: 100%;
+  padding-left: 16%;
+  font-weight: 400;
+  margin: 0rem 0 2rem 0;
+}
+.gppcr {
+  position: absolute;
+  bottom: calc(100% + 2rem);
+  color: white;
+  font-size: 4rem;
+  font-family: Lucida sans;
+  font-weight: 500;
+  max-width: 100%;
+  left: 2rem;
+  line-height: 1.2;
+}
+.main {
+  width: 70%;
+}
+.container {
+  width: 100%;
+}
+.row {
+  margin-bottom: 5rem;
+  justify-content: unset !important;
+}
+.row-header {
+  width: 100%;
+  padding: 0 0 2rem 2rem;
+}
+.row-header h4 {
+  font-weight: 500;
+}
+figure {
+  width: calc(25% - 1rem);
+  height: 25rem;
+  background: #eee;
+  margin: 0.5rem;
+  position: relative;
+}
+figure img,
+figure video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+figcaption {
+  position: absolute;
+  bottom: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  left: 0;
+  text-transform: capitalize;
+  color: white;
+  font-size: 1.4rem;
+  padding: 1rem 0 0.5rem 1rem;
+  line-height: 1;
+  width: 100%;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+}
+#videoDOM {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  min-height: 100vh;
+  width: 100%;
+}
+.video-con {
+  width: 100%;
+  height: 80vh;
+}
+#vidMain {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  background: black;
+}
+@media only screen and (max-width: 992px) {
+  html {
+    font-size: 55%;
+  }
+  .main {
+    width: 80%;
+  }
+  .gppcr {
+    font-size: 3.5rem;
+  }
+}
+@media only screen and (max-width: 760px) {
+  html {
+    font-size: 50%;
+  }
+  header {
+    height: 67rem;
+  }
+  .main {
+    width: 90%;
+  }
+  .gppcr {
+    font-size: 2.8 rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .header-top {
+    top: 20rem;
+    padding: 0;
+  }
+  main {
+    width: 100%;
+    box-shadow: unset;
+    top: 20rem;
+  }
+  .main {
+    width: 90%;
+  }
+  .gppcr {
+    font-size: 2.2 rem;
+  }
+  figure {
+    width: calc(33.333% - 1rem);
+    height: 13rem;
+  }
+}

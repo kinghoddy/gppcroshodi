@@ -1,0 +1,7 @@
+[[redirects]]
+  from = "/https://gppcroshodi.netlify.com"
+  to = "/https://gppcroshodi.ga"
+  status = 301
+  force = true
+  query = {path = ":path"}
+  conditions = {Language = ["en"], Country = ["US"], Role

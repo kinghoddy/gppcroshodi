@@ -1,0 +1,15 @@
+CREATE TABLE comments (
+      comment_id int(11) not null AUTO_INCREMENT PRIMARY KEY,
+    uid varchar(128) not null,
+    date datetime not null,
+    message TEXT not null
+);
+
+
+CREATE TABLE commenting (
+      comment_id int(11) not null AUTO_INCREMENT PRIMARY KEY,
+    parent_comment_id int(11) not null,
+    comment varchar(300) not null,
+    comment_sender_name varchar(30) not null,
+    date timestamp not null
+);
