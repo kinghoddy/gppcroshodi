@@ -5,19 +5,23 @@ var loader = '<section class="mt-2 text-center" id="loader"><img src="img/load.g
 var date;
 setInterval(() => {
     date = new Date(),
-        day = date.getDate() + 21,
-        hour = 23 - date.getHours(),
-        min = 59 - date.getMinutes(),
-        sec = 59 - date.getSeconds();
+        // day = date.getDate() + 21,
+        // hour = 23 - date.getHours(),
+        // min = 59 - date.getMinutes(),
+        // sec = 59 - date.getSeconds();
+        day = 42,
+        hour = 0,
+        min = 0,
+        sec = 0;
 
 }, 1000);
 var components = {
 
     default: [
         // header
-        '<header class="py-5 py-lg-0  px-4"> <div id="header-bg" class="carousel slide" data-ride="carousel"> <ol class="carousel-indicators"> <li data-target="#header-bg" data-slide-to="0" class="active"></li> <li data-target="#header-bg" data-slide-to="1"></li> <li data-target="#header-bg" data-slide-to="2"></li> </ol> <div class="carousel-inner" role="listbox"> <div class="carousel-item active"> <img src="img/mike.jpg" alt="First slide"> </div> <div class="carousel-item"> <img src="img/audience1.jpg" alt="Second slide"> </div><div class="carousel-item"> <img src="img/audience2.jpg" alt="third slide"> </div> </div> <a class="carousel-control-prev" href="#header-bg" role="button" data-slide="prev"> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#header-bg" role="button" data-slide="next"> <span class="sr-only">Next</span> </a> </div> <div class="container hpg p py-5"> <div class="row align-items-center text-white"> <div class="col text-center wow rotateIn " data-wow-duration="1.5s"> <h1 class="text-capitalize">Praise challenge </h1> <h3 style="color:white !important" class="text-uppercase">season 2</h3> <p class="text-capitalize">Great physician pentecostal church of redeemer</p> <p> <a href="https://www.facebook.com/greatphysicianpentecostaloshodi/"> <i class="fab fa-facebook-f fa-2x text-primary"></i></a> <a href="https://chat.whatsapp.com/BwjhzBKvWDA9FpDSGctxlu"><i class="fab fa-whatsapp fa-2x mx-3 text-success"></i></a> <a href="https://www.youtube.com/channel/UCsuHF_CqyVjBYozRSG9sx-g"> <i class="fab fa-youtube fa-2x text-red"></i></a> </p> </div> <div class="spin-icon wow bounce slower infinite"> <a href="#footer"> <i href="#footer" class="text-white fa-2x fa fa-arrow-down "></i></a> </div> <div class="col-md-6 wow rollIn"> <div class="timer d-flex text-center justify-content-center"> <h3>Next Challenge In</h3> <div class="timer-row d-flex justify-content-center">  <div class="d-flex"><span class="domHour">00</span> <span>Hours</span></div> <div class="d-flex"><span class="domMin">00</span> <span>Minutes</span></div> <div class="d-flex"><span class="domSec">00</span> <span>Seconds</span></div> </div> </div> </div> </div> </div> </header>',
+        '<header class="py-5 py-lg-0  px-4"> <div id="header-bg" class="carousel slide" data-ride="carousel"> <ol class="carousel-indicators"> <li data-target="#header-bg" data-slide-to="0" class="active"></li> <li data-target="#header-bg" data-slide-to="1"></li> <li data-target="#header-bg" data-slide-to="2"></li> </ol> <div class="carousel-inner" role="listbox"> <div class="carousel-item active"> <img src="img/mike.jpg" alt="First slide"> </div> <div class="carousel-item"> <img src="img/audience1.jpg" alt="Second slide"> </div><div class="carousel-item"> <img src="img/audience2.jpg" alt="third slide"> </div> </div> <a class="carousel-control-prev" href="#header-bg" role="button" data-slide="prev"> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#header-bg" role="button" data-slide="next"> <span class="sr-only">Next</span> </a> </div> <div class="container hpg p py-5"> <div class="row align-items-center text-white"> <div class="col text-center wow rotateIn " data-wow-duration="1.5s"> <h1 class="text-capitalize">Praise challenge </h1> <h3 style="color:white !important" class="text-uppercase">season 2</h3> <p class="text-capitalize">Great physician pentecostal church of redeemer</p> <p> <a href="https://www.facebook.com/greatphysicianpentecostaloshodi/"> <i class="fab fa-facebook-f fa-2x text-primary"></i></a> <a href="https://chat.whatsapp.com/BwjhzBKvWDA9FpDSGctxlu"><i class="fab fa-whatsapp fa-2x mx-3 text-success"></i></a> <a href="https://www.youtube.com/channel/UCsuHF_CqyVjBYozRSG9sx-g"> <i class="fab fa-youtube fa-2x text-red"></i></a> </p> </div> <div class="spin-icon wow bounce slower infinite"> <a href="#footer"> <i href="#footer" class="text-white fa-2x fa fa-arrow-down "></i></a> </div> <div class="col-md-6 wow rollIn"> <div class="timer d-flex text-center justify-content-center"> <h3>Praise challenge completed</h3> <div class="timer-row d-flex justify-content-center">  <div class="d-flex"><span class="domHour">00</span> <span>Hours</span></div> <div class="d-flex"><span class="domMin">00</span> <span>Minutes</span></div> <div class="d-flex"><span class="domSec">00</span> <span>Seconds</span></div> </div> </div> </div> </div> </div> </header>',
         // header foot
-        '<div class="container bg-my-dgrey" id="headerFoot"> <div class="row" > <div class="col text-center text-mydark py-3 text-capitalize "> <h1 class="h2 text-mydark">40 days praise challenge <span id="domDay">day 1</span></h1> </div> </div> </div',
+        '<div class="container bg-my-dgrey" id="headerFoot"> <div class="row" > <div class="col text-center text-mydark py-3 text-capitalize "> <h1 class="h2 text-mydark">40 days praise challenge <span id="domDay">Is Completed</span></h1> </div> </div> </div',
 
         // main
         '<main class="my-3"></main>',
@@ -73,25 +77,31 @@ function countDown() {
         domMin = Array.from(document.querySelectorAll('.domMin')),
         domSec = Array.from(document.querySelectorAll('.domSec'));
     var date = new Date(),
-        day = date.getDate() + 21,
-        hour = 23 - date.getHours(),
-        min = 59 - date.getMinutes(),
-        sec = 59 - date.getSeconds();
+        // day = date.getDate() + 21,
+        // hour = 23 - date.getHours(),
+        // min = 59 - date.getMinutes(),
+        // sec = 59 - date.getSeconds();
+            day = 0
+        hour = 0
+        min = 0
+        sec = 0
 
-    if (domDay) domDay.textContent = ` Day ${dec(day)} up next`;
+    // if (domDay) domDay.textContent = ` Day ${dec(day)} up next`;
+    if (domDay) domDay.textContent = ` Completed`;
     function dec(num) {
         if (num < 10) {
             return "0" + num;
         } else return num;
     }
     // checking if it is time for the challenge
-    if (hour >= 23 && min >= 59 - 30) {
-        day--
-        hour = 0;
-        min = 0;
-        sec = 0;
-        if (domDay) domDay.textContent = " Day " + day + " in progress";
-    }
+    // if (hour >= 23 && min >= 59 - 30) {
+    //     day--
+    //     hour = 0;
+    //     min = 0;
+    //     sec = 0;
+    //     if (domDay) domDay.textContent = " Day " + day + " in progress";
+    // }
+   
     function loop(unit, value) {
         unit.forEach(cur => {
             cur.textContent = dec(value)
@@ -295,12 +305,7 @@ function render() {
         new WOW().init();
     });
 
-    // voice note
-    (function () {
-
-        if (window.heyoya == undefined) { window.heyoya = {}; window.heyoyaStructure = {}; window.heyoyaStructure.heyoyaRootUrl = { rootUrl: "" }; if (typeof Object.freeze == "function") { Object.freeze(window.heyoyaStructure); Object.freeze(window.heyoyaStructure.heyoyaRootUrl); } if (typeof Object.seal == "function") { Object.seal(window.heyoyaStructure); Object.seal(window.heyoyaStructure.heyoyaRootUrl); } (function () { var heyoyaSettings = window.heyoyaSettings = {}; heyoyaSettings.isStore = false; heyoyaSettings.rt = 30000; heyoyaSettings.width = 1000; heyoyaSettings.title = 'Complete your challenge'; heyoyaSettings.stit = 1; heyoyaSettings.sl = 'en'; heyoyaSettings.titleColorText = '#f3f3f3'; heyoyaSettings.titleColorBackground = '#104500'; heyoyaSettings.mainColor = ''; heyoyaSettings.logoPath = ''; heyoyaSettings.ppPath = ''; heyoyaSettings.affId = 'v8z6eKKQXi'; heyoyaSettings.sads = 0; heyoyaSettings.sadscid = 32767; heyoyaSettings.swdt = 0; heyoyaSettings.smachl = 1; heyoyaSettings.srachl = 1; heyoyaSettings.macht = 'Record your voice or type a comment'; heyoyaSettings.racht = ''; heyoyaSettings.ssacht = 0; heyoyaSettings.sacht = ''; heyoyaSettings.srsacht = 1; heyoyaSettings.rsacht = ''; heyoyaSettings.fonts = ''; heyoyaSettings.pec = 0; heyoyaSettings.wa = 0; heyoyaSettings.recordingIconsColor = '#38761d'; heyoyaSettings.linksColor = '#38761d'; heyoyaSettings.textColor = ''; heyoyaSettings.cardsColor = ''; heyoyaSettings.buttonsColor = '#104500'; heyoyaSettings.asi = '36194'; heyoyaSettings.sdwl = 0; var heyoya = document.createElement('script'); heyoya.type = 'text/javascript'; heyoya.async = true; heyoya.src = '//commerce-static.heyoya.com/b2b/b2b_loader.hey?affId=v8z6eKKQXi'; var script = document.getElementsByTagName('script')[0]; script.parentNode.insertBefore(heyoya, script); })(); }
-    }())
-    // end of voice note
+    
 
     //  comments
     var commentSection = document.querySelector('aside');
@@ -339,37 +344,44 @@ function render() {
         $("#wrapper").toggleClass("toggled");
     });
     // app starter
-    setInterval(() => {
-        countDown();
-        var starter = Array.from(document.querySelectorAll('.start-btn')),
-            date_ = 0 - new Date().getDate();
+    // setInterval(() => {
+    //     countDown();
+    //     var starter = Array.from(document.querySelectorAll('.start-btn')),
+    //         date_ = 0 - new Date().getDate();
 
-        if (date_ < 10 && date_ > 0) {
-            starter.forEach(cur => {
-                cur.innerHTML = `Active in ${date_} days time`
-            })
-            document.querySelector('.domDays').innerHTML = date_;
-            document.querySelector('.timer h3').innerHTML = 'First challenge in';
+    //     if (date_ < 10 && date_ > 0) {
+    //         starter.forEach(cur => {
+    //             cur.innerHTML = `Active in ${date_} days time`
+    //         })
+    //         document.querySelector('.domDays').innerHTML = date_;
+    //         document.querySelector('.timer h3').innerHTML = 'First challenge in';
 
-        } else if (date_ == 0) {
-            starter.forEach(cur => {
-                cur.innerHTML = 'Get Ready'
-            })
-            document.querySelector('.timer h3').innerHTML = 'First challenge in';
-            document.querySelector('.domDays').parentElement.innerHTML = ''
-        } else if (date_ < 0) {
+    //     } else if (date_ == 0) {
+    //         starter.forEach(cur => {
+    //             cur.innerHTML = 'Get Ready'
+    //         })
+    //         document.querySelector('.timer h3').innerHTML = 'First challenge in';
+    //         document.querySelector('.domDays').parentElement.innerHTML = ''
+    //     } else if (date_ < 0) {
 
-            starter.forEach(cur => {
-                cur.innerHTML = 'Go to challenge'
-                cur.addEventListener('click', render);
-            })
-            if (hour >= 23 && min >= 59 - 30) {
-                document.querySelector('.timer h3').innerHTML = " Day " + (day - 1) + " in progress";
-            } else document.querySelector('.timer h3').innerHTML = 'Next challenge in';
-            document.querySelector('.domDays').parentElement.innerHTML = ''
+    //         starter.forEach(cur => {
+    //             cur.innerHTML = 'Go to challenge'
+    //             cur.addEventListener('click', render);
+    //         })
+    //         if (hour >= 23 && min >= 59 - 30) {
+    //             document.querySelector('.timer h3').innerHTML = " Day " + (day - 1) + " in progress";
+    //         } else document.querySelector('.timer h3').innerHTML = 'Next challenge in';
+    //         document.querySelector('.domDays').parentElement.innerHTML = ''
 
-        }
-    }, 1000)
+    //     }
+    // }, 1000)
+      var starter = Array.from(document.querySelectorAll('.start-btn'));
+    
+    starter.forEach(cur => {
+        cur.innerHTML = 'Go to challenge'
+        cur.addEventListener('click', render);
+    })
+    document.querySelector('.timer h3').innerHTML = "Praise challenge Completed";
     // scroll
     if (window.innerWidth < 1025) {
         var pos = 0;
