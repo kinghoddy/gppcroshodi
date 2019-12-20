@@ -44,7 +44,7 @@ function nightMd() {
     var isDark = false;
     dark_btn.addEventListener('click', () => {
         if (!isDark) {
-            style2.innerHTML = ':root { --bg-mywhite: #000; --bg-my-dgrey: #111; --mydark: #fff} h3,h4,h5,.h4,.day span{color:yellow !important}';
+            style2.innerHTML = ':root { --bg-mywhite: rgba(0,0,0,.7); --bg-my-dgrey: #111; --mydark: #fff} h3,h4,h5,.h4,.day span{color:yellow !important}';
             isDark = true
         } else {
             style2.innerHTML = '';

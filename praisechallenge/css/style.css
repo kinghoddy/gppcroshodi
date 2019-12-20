@@ -1,6 +1,6 @@
 :root {
-  --bg-mywhite: #fff;
-  --bg-my-dgrey: #f7f7f7;
+  --bg-mywhite: rgba(255, 255, 255, 0.9);
+  --bg-my-dgrey: url('../img/ballon.gif');
   --mydark: #555;
 }
 
@@ -12,6 +12,8 @@
 .bg-my-dgrey {
   transition: all .3s;
   background: var(--bg-my-dgrey);
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .text-mydark {

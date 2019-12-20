@@ -9,6 +9,6 @@ new WOW().init();
     setTimeout(() => {
       mbtn.click();
     }, 20000);
-    }modalToggle()
+    }
     
 
