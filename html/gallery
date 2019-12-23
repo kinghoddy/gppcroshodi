@@ -1,0 +1,56 @@
+    <!-- <div class="background">
+        <video id="bgVideo" src="../vid/rain.mp4  " muted loop autoplay></video>
+    </div>
+    <div class="category flex">
+        <ul class="flex">
+            <li class="flex"><a class="flex" href="#photo"><i class="fa fa-image"></i>Photos</a></li>
+            <li class="flex"><a class="flex" href="#video"><i class="fa fa-video"></i>Videos</a></li>
+        </ul>
+    </div> -->
+    <header>
+      <div class="logo-box">
+        <img src="../img/logoc-2.png" alt="logo" />
+      </div>
+    </header>
+    <main class="flex">
+      <h3 class="gppcr">Great physician pentecostal chrch of redeemer</h3>
+      <h2 class="gallery-name">Gallery</h2>
+      <div class="main flex"></div>
+    </main>
+    <nav class="flex">
+      <i class="fa fa-bars"></i>
+      <ul class="blind">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../daily-blessings.html">Daily blessings</a></li>
+        <li>
+          <a
+            href="https://1kqnul4wp9xs1btksi7aaq-on.drv.tw/gppcr-website.com/html/ministers.html?fbclid=IwAR0uaktREwh1T9L4fiQeSXCCxwPvEbKZU1fAUCrQpgHffya76RMPqBUMkes"
+            >Ministers desk</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <div id="videoDOM" class="d-none">
+      <div class="container-fluid ">
+        <div class="row ">
+          <div class=" p-0 video-con height-50 col-12">
+            <video class="img-fluid" id="vidMain" autoplay></video>
+            <div class="controls"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header-top">
+      <ul class="flex">
+        <li class="flex">
+          <a class="flex header-links" href="#photo"
+            ><i class="fa fa-image"></i
+          ></a>
+        </li>
+        <li class="flex">
+          <a class="flex header-links" href="#video"
+            ><i class="fa fa-video"></i
+          ></a>
+        </li>
+      </ul>
+    </div>
