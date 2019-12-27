@@ -8,7 +8,7 @@
 
     "figure": "<div class='parent-con row'> <div class='col-6 p-0' style='border-right:2px solid #555'> <a href='../img/carol.jpg' class='imagelink'> <img src='../img/carol.jpg' alt='carol' class='img-fluid'> </a> </div> <div class='col-6 p-0' style='border-left:2px solid #555'> <a href='../img/carol-2.png' class='imagelink'> <img src='../img/carol-2.png' alt='carol' class='img-fluid'> </a> </div> </div>",
     "href": "../img/praise.jpg",
-    "caption": "<a class='btn-outline-dark btn btn-block' href='../praisechallenge/index.html'>Check it out</a>"
+    "caption": "<a class='btn-outline-dark btn btn-block' href='gallery.html'>See more photos</a>"
   },
   {
     "id": "praise",

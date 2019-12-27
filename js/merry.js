@@ -99,7 +99,7 @@ function slideShow(slides) {
 
 function countDown() {
   var date = new Date(),
-    day = 92 - date.getDate(),
+    day = 31 - date.getDate(),
     hour = 23 - date.getHours(),
     min = 59 - date.getMinutes(),
     sec = 59 - date.getSeconds();

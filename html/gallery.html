@@ -55,8 +55,7 @@
     <link rel="stylesheet" href="../css/main-2.css">
     <link rel="stylesheet" href="../css/animate.min.css">
     <link rel="stylesheet" href="../css/gallery.css" />
-    <meta name="theme-color" content="#111" />
-    <link rel="stylesheet" href="../css/magnific-popup.css" />
+    <meta name="theme-color" content="#333" />
     <script src="../js/all.js"></script>
   </head>
 
@@ -66,25 +65,27 @@
     <a class="navbar-brand" href="../index.html">
       <img src="../img/gppcr-logo.png" alt="logo" style="height: 35px;">
     </a>
-    <h3 class="text-white ml-5">Gallery</h3>
+    <h4 class="text-white ml-lg-5" style="font-family: cursive, Arial, Helvetica, sans-serif !important;">
+      Gallery > <span id="nest" class="font-weight-light px-3"></span>
+    </h4>
         <button class="btn btn-secondary d-lg-none" type="button" data-toggle="collapse" data-target=".navbar-collapse" >
          <i class="fa fa-bars"></i>
         </button>
     <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ml-auto  mt-2 mt-lg-0">
+      <ul class="navbar-nav ml-auto  mt-2 mt-lg-0 text-capitalize">
         <li class="nav-item active">
-            <a class="nav-link" href="#">Active <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="gallery.html">Gallery</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="../index.html">back to home</a>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="dropdownId">
-                <a class="dropdown-item" href="#">Action 1</a>
-                <a class="dropdown-item" href="#">Action 2</a>
-            </div>
+        <li class="nav-item">
+            <a class="nav-link" href="ministers.html">ministers desk</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../daily-blessings.html">Daily blessings</a>
+        </li>
+      
     </ul>
     </div>
   
@@ -114,32 +115,49 @@
   </div>
 </section>
 
-<section id="photos">
+<section id="photos" class="bg-secondary">
 
 </section>
 
-<section id="videos">
+<section id="videos" class="bg-light">
+<div class="container-fluid p-0">
+  <div class="row py-lg-4">
+    <div id="mainVidCon" class="col-lg-8 d-none px-lg-4">
+      <figure >
+        <div class="movieCon">
+          <video src="#" id="mainVid" autoplay loop controls></video>
+          <div id="controls">
+          </div>
+        </div>
+        <figcaption>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="col-12 feed py-4 py-lg-0 px-lg-5">
 
+    </div>
+  </div>
+</div>
 </section>
 </main>
- <nav class="text-center fixed-bottom bg-white" id="category">
+ <nav class="text-center border-top fixed-bottom bg-white" id="category">
          <div class="container-fluid p-0">
            <div class="row">
              <div class="col-4 p-0">
-               <a href="#" class="btn btn-sm btn-block btn-light">
+               <a href="#albums" class="btn btn-sm btn-block btn-light">
                  <i class="fa cat-icon text-success fa-photo-video" ></i>
                  <br />
                  Albums
                </a>
              </div>
              <div class="col-4 p-0">
-               <a href="#" class="btn btn-sm btn-block btn-light">
+               <a href="#photos" class="btn btn-sm btn-block btn-light">
                  <i class="text-warning fa cat-icon fa-image"></i> <br />
                  Photos
                </a>
              </div>
              <div class="col-4 p-0">
-               <a href="#" class="btn btn-sm btn-block btn-light">
+               <a href="#videos" class="btn btn-sm btn-block btn-light">
                  <i class="fa cat-icon fa-video text-danger"></i><br />
                  Videos
                </a>
@@ -156,14 +174,7 @@
   <script src="../js/bootstrap.js"></script>
   <script src="../js/bootstrap.bundle.min.js"></script>
   <script src="../js/wow.min.js"></script>
-  <script src="../js/jquery.magnific-popup.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/gallery.js"></script>
-  <script>
-    $(".parent-container").magnificPopup({
-      delegate: "a", // child items selector, by clicking on it popup will open
-      type: "image"
-      // other options
-    });
-  </script>
+
 </html>
