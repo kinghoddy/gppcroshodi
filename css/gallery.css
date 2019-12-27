@@ -106,7 +106,8 @@ video{
   visibility: hidden;
   opacity: 0;
 }
-.movieCon:hover  #controls{
+.movieCon:hover  #controls,
+#controls.active{
   visibility: visible;
   opacity: 1;
 }
@@ -124,36 +125,87 @@ video{
    width: 100%;
    padding: 1rem .5rem;
 }
-#rangeSeeker{
-  width: 100%;
-}
-#volumeBtn{
+.bottom button{
   background: none;
   color: white;
+  outline: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 0;
-  outline: 0
+}
+ #rangeSeeker {
+  -webkit-appearance: none;
+  /* margin: 18px 0; */
+  /* background: linear-gradient(to right, #ff1100 0%, #ff1100 50%, rgba(255,255,255,0.5) 50%, rgba(255, 255, 255, 0.5) 100%); */
+  width: 100%;
+  position: relative;
+}
+
+
+ #rangeSeeker:hover{
+  overflow: visible;
+}
+#rangeSeeker:focus {
+  outline: 1px solid transparent;
+  outline-offset: .2rem;
+}
+#rangeSeeker::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  border-radius: 25.3px;
+}
+#rangeSeeker::-webkit-slider-thumb {
+  height:15px;
+  width: 15px;
+  border-radius: 50%;
+  cursor:w-resize;
+  -webkit-appearance: none;
+  margin-top: -5px;
+  background: #ff1100;
+  /* box-shadow: -40rem 0 0rem 40rem #f11000; */
+}
+#rangeSeeker:focus::-webkit-slider-runnable-track {
+  /* background: #aaa; */
+}
+#rangeSeeker::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: #ff1100;
+  border-radius: 1.3px;
+}
+#rangeSeeker::-moz-range-thumb {
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ff1100;
+  box-shadow: -100vh 0 0 #ff1100;
+  cursor: pointer;
+} 
+
+
+#volumeBtn{
 }
 
 @media only screen and (min-width : 1030px){
  #mainVid{
    max-height: 70vh;
  }
-
- .playBtn{
-   font-size: 1.2rem
- }
-
- #controls{
-  background: linear-gradient(to bottom , rgba(0, 0, 0, 0.3), rgba(0, 0, 0, .6) );
-
- }
-
  .feed figure,
  .feed .ads{
   height: 10rem;
   background: #fff;
 }
-.bottom{
-  padding: .5rem .5rem;
+#rangeSeeker{
+  overflow: hidden;
 }
+#controls{
+  background: linear-gradient(to bottom , rgba(0, 0, 0, 0.3), rgba(0, 0, 0, .5) );
+
+}
+
 }

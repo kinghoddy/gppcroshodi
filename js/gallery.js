@@ -145,7 +145,7 @@ var fragment = null;
 
 function navigate() {
   document.documentElement.scrollTop = 0;
-  mainVid.pause()
+  mainVid.pause();
   fragment = location.hash.substr(1);
   nest.innerHTML = fragment;
   var links = document.querySelectorAll("#category .btn");
@@ -171,7 +171,7 @@ function navigate() {
   });
 }
 function playback(target, cap) {
-    document.documentElement.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
   var vidSec = document.getElementById("videos"),
     video = document.querySelector(" #mainVid"),
     caption = document.querySelector("#mainVidCon .description"),
@@ -192,88 +192,110 @@ function playback(target, cap) {
     feed.classList.remove("col-lg-4");
     video.src = null;
   }
+  controls.classList.remove("active");
+  document.querySelector(".playBtn").innerHTML = '   <i class="material-icons">pause</i> ';
 }
 
-function mediaFeed(){
-    var feed = document.querySelector('.feed'),
-        vidFeed = [];
-  for (var i = 0 ; i < sources.video.length; i++){
-      var el = `   <figure class="row p-2 px-4" data-target="${sources.video[i].src}" data-des="${sources.video[i].des}">
+function mediaFeed() {
+  var feed = document.querySelector(".feed"),
+    vidFeed = [];
+  for (var i = 0; i < sources.video.length; i++) {
+    var el = `   <figure class="row p-2 px-4" data-target="${sources.video[i].src}" data-des="${sources.video[i].des}">
       <video src="${sources.video[i].src}" class="col-3"></video>
       <figcaption class="col-9">${sources.video[i].des}</figcaption>
     </figure>`;
     vidFeed.push(el);
   }
-  feed.innerHTML += vidFeed.join(' ');
+  feed.innerHTML += vidFeed.join(" ");
 }
 
-function contoller(){
-    var playBtn = document.querySelector('.playBtn'),
-    mainVid = document.getElementById('mainVid')
-    seekSlider = document.getElementById('rangeSeeker');
-    playBtn.addEventListener('click', playPause) ;
-    seekSlider.addEventListener('change', vidSeek) ;
-    mainVid.addEventListener('timeupdate', ()=>{
-        var nt = mainVid.currentTime * (100 / mainVid.duration) ;
-        seekSlider.value = nt;
-        var curmin = Math.floor(mainVid.currentTime / 60),
-        cursec = Math.floor(mainVid.currentTime - curmin * 60),
-        durmins = Math.floor(mainVid.duration / 60),
-        dursec = Math.floor(mainVid.duration - durmins * 60);
-        if(cursec < 10){
-            cursec = "0"+cursec;
-        }
-        if(dursec < 10){
-            dursec = "0"+cursec;
-        }
-        curTime.innerHTML = curmin + ':' + cursec;
-       durTime.innerHTML = durmins + ':' + dursec;
-    })
-    function playPause(){
-        if(mainVid.paused){
-            playBtn.innerHTML = ' <i class="fa fa-pause"></i>'
-            mainVid.play();
-            console.log('played');
-            
-        }else{
-            playBtn.innerHTML = ' <i class="fa fa-play"></i>'
-            mainVid.pause();
-            console.log('paused');
-            
-        }
-    }
-    function vidSeek(){
-         var seekTo = mainVid.duration *(seekSlider.value / 100);
-         mainVid.currentTime = seekTo;
-    }
-}
-
-
-
-  (function init() {
-    navigate();
-    document.querySelector(".con").innerHTML = carousel("img");
-    document.querySelector(".imgcon").innerHTML = carousel("miniImg");
-    document.querySelector(".vidcon").innerHTML = carousel("miniVid");
-    window.addEventListener("hashchange", event => {
-      event.preventDefault();
-      navigate();
-    });
-
-mediaFeed();
-
-// playback call
-    var figures = document.querySelectorAll(".feed figure");
-figures.forEach(cur => {
-  cur.addEventListener("click", () => {
-      figures.forEach(cur =>{
-          cur.classList.remove('active');
-      })
-      cur.classList.add('active');
-    playback(cur.getAttribute("data-target"),cur.getAttribute("data-des"));
+function contoller() {
+  var playBtn = document.querySelector(".playBtn"),
+    mainVid = document.getElementById("mainVid");
+  seekSlider = document.getElementById("rangeSeeker");
+  playBtn.addEventListener("click", playPause);
+  seekSlider.addEventListener("change", () => {
+    vidSeek();
+    console.log(seekSlider.value);
+    seekSliderBg(seekSlider.value);
   });
-});
-// end of playback call
-contoller()
-  })();
+  seekSlider.addEventListener("mousedown", () => {
+    mainVid.pause();
+  });
+  seekSlider.addEventListener("mousemove", event => {
+    seekSliderBg(seekSlider.value);
+  });
+  seekSlider.addEventListener("mouseup", () => {
+    mainVid.play();
+  });
+  mainVid.addEventListener("timeupdate", () => {
+    var nt = mainVid.currentTime * (100 / mainVid.duration);
+    seekSlider.value = nt;
+    seekSliderBg(seekSlider.value);
+    var curmin = Math.floor(mainVid.currentTime / 60),
+      cursec = Math.floor(mainVid.currentTime - curmin * 60),
+      durmins = Math.floor(mainVid.duration / 60),
+      dursec = Math.floor(mainVid.duration - durmins * 60);
+    if (cursec < 10) {
+      cursec = "0" + cursec;
+    }
+    if (dursec < 10) {
+      dursec = "0" + cursec;
+    }
+    curTime.innerHTML = curmin + ":" + cursec;
+    durTime.innerHTML = durmins + ":" + dursec;
+  });
+  function playPause() {
+    if (mainVid.paused) {
+        playBtn.innerHTML = '   <i class="material-icons">pause</i> ';
+        mainVid.play();
+        console.log("played");
+        controls.classList.remove("active");
+    } else {
+        playBtn.innerHTML = '   <i class="material-icons">play_arrow</i> ';
+      controls.classList.add("active");
+      mainVid.pause();
+      console.log("paused");
+    }
+  }
+  function vidSeek() {
+    var seekTo = mainVid.duration * (seekSlider.value / 100);
+    mainVid.currentTime = seekTo;
+  }
+  function seekSliderBg(val) {
+    seekSlider.style.background =
+      "linear-gradient(to right, #f21 0%, #f21 " +
+      val +
+      "%, rgba(255,255,255, .5) " +
+      val +
+      "%,  rgba(255,255,255, .2)  100%)";
+  }
+}
 
+(function init() {
+  navigate();
+  document.querySelector(".con").innerHTML = carousel("img");
+  document.querySelector(".imgcon").innerHTML = carousel("miniImg");
+  document.querySelector(".vidcon").innerHTML = carousel("miniVid");
+  window.addEventListener("hashchange", event => {
+    event.preventDefault();
+    navigate();
+  });
+
+  mediaFeed();
+
+  // playback call
+  var figures = document.querySelectorAll(".feed figure");
+  figures.forEach(cur => {
+    cur.addEventListener("click", () => {
+      figures.forEach(cur => {
+        cur.classList.remove("active");
+      });
+      cur.classList.add("active");
+
+      playback(cur.getAttribute("data-target"), cur.getAttribute("data-des"));
+    });
+  });
+  // end of playback call
+  contoller();
+})();
