@@ -125,14 +125,27 @@ video{
    width: 100%;
    padding: 1rem .5rem;
 }
-.bottom button{
+.movieCon button{
   background: none;
-  color: white;
   outline: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 0;
+  color: #ccc;
+  font-size: 1.5rem;
+}
+button:focus{
+  outline: 0 !important;
+
+}
+#curTime,
+#durTime {
+  font-size: 1rem;
+  font-weight: 400 !important
+}
+#durTime{
+  color: #bdbdbd
 }
  #rangeSeeker {
   -webkit-appearance: none;

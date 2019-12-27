@@ -240,10 +240,14 @@ function contoller() {
       cursec = "0" + cursec;
     }
     if (dursec < 10) {
-      dursec = "0" + cursec;
+      dursec = "0" + dursec;
+    }
+    if(dursec){
+        durTime.innerHTML = durmins + ":" + dursec;
+    }else{
+        durTime.innerHTML = "0:00";
     }
     curTime.innerHTML = curmin + ":" + cursec;
-    durTime.innerHTML = durmins + ":" + dursec;
   });
   function playPause() {
     if (mainVid.paused) {
@@ -272,6 +276,18 @@ function contoller() {
   }
 }
 
+function displayControls(){
+    var mobileCtrl = `<div class="control-dom"> <button class=" playBtn"> <i class="material-icons">pause</i> </button> <div class="bottom text-white container-fluid"> <div class="row text-center align-items-center"> <div class="col-4 col-lg-2 "> <span id="curTime" class="px-1 "></span> / <span id="durTime" class="px-1 "></span> </div> <div class="col-6 col-lg-9 px-0 pb-2"> <input type="range" min="0" max="100" step="1" id="rangeSeeker"> </div> <div class="col-2 col-lg-1 px-2"> <button id="volumeBtn"> <i class="material-icons">fullscreen</i> </button> </div> </div> </div> <style> .playBtn{ font-size: 4rem !important; } .bottom{ padding: .5rem .5rem } #rangeSeeker{ height: 2.5px; } </style> </div>
+    `,
+    desktopCtrl = `<style> .bottom { padding: 0 .5rem .3rem; } #btnNext{ font-size: 1.7rem; } .playBtn { font-size: 1.9rem !important } @media only screen and (min-width: 760px) { .playBtn { font-size: 1.2rem } } </style> <div class="bottom text-white container-fluid"> <div class="row "> <div class=" col "> <input type="range" min="0" max="100" step="1" id="rangeSeeker"> </div> </div> <div class="row align-items-center justify-content-between"> <div class="col align-items-center d-flex"> <button class=" playBtn px-sm-4"> <i class="material-icons">play_arrow</i> </button> <button id="btnNext" class="pr-2"> <i class="material-icons" >skip_next</i> </button> <button id="volumeBtn" class="pr-3"> <i class="material-icons" >volume_up</i> </button> <span id="curTime" class="px-1 font-weight-light "></span> / <span id="durTime" class="px-1 font-weight-light" ></span> </div> <div class="col d-flex align-items-center "> <button id="pInP" class="ml-auto pr-2"> <i class="material-icons">picture_in_picture_alt</i> </button> <button id="pInP" class="pr-2 d-none d-md-flex"> <i class="material-icons">crop_landscape</i> </button> <button id="fullScreen" class="pr-2"> <i class="material-icons">fullscreen</i> </button> </div> </div> </div>`;
+    if(window.innerWidth > 1024){
+        controls.innerHTML = desktopCtrl
+    }else{
+        controls.innerHTML = mobileCtrl;
+    }
+}
+
+
 (function init() {
   navigate();
   document.querySelector(".con").innerHTML = carousel("img");
@@ -297,5 +313,6 @@ function contoller() {
     });
   });
   // end of playback call
+  displayControls()
   contoller();
 })();
