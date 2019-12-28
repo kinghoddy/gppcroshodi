@@ -9,11 +9,19 @@ body{
   background-size: cover;
   min-height: 100vh;
 }
-nav{
+.spinner{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar{
   background-color: #333;
+  padding: .2rem 1rem;
 }
 main{
-  margin-top: 3.8rem;
+  margin: 2.9rem 0 3rem 0;
 }
 section{
   min-height: 100vh;
@@ -40,6 +48,7 @@ section{
 .others .col{ 
   height: calc((100vh - 7.5rem)/2)
 }
+/* end of album styling */
 #category  .cat-icon {
    font-size: 1.5rem !important
 }
@@ -49,9 +58,16 @@ section{
   box-shadow: none;
   color: rgb(68, 0, 6) !important
 }
+/* video styling */
+
 .movieCon{
   position: relative;
   height: auto;
+}
+
+#videoCarousel{
+  height: 20rem;
+  background: #ddd;
 }
 
 video{
@@ -67,6 +83,11 @@ video{
 #mainVidCon .description{
   font-weight: 600;
   padding: 0 1rem;
+}
+#initLayout .feed{
+  height: 15rem;
+  overflow: hidden;
+  background: #ddd
 }
 .feed figure,
 .feed .ads{
@@ -85,13 +106,21 @@ video{
   background: #ddd;
 }
 .feed video{
-  max-height: 100%
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 .feed figure.active{
-  box-shadow: 0 .5rem  .5rem rgba(0, 0, 0, 0.1) !important
-
+  border: 1px solid #ddd;
 }
-
+.feed figcaption{
+  font-weight: 700;
+  font-size: .9rem;
+}
+.feed_sm{
+  height: 8rem;
+  background: #ddd
+}
 #controls{
   position: absolute;
   bottom: 0;
@@ -153,6 +182,7 @@ button:focus{
   /* background: linear-gradient(to right, #ff1100 0%, #ff1100 50%, rgba(255,255,255,0.5) 50%, rgba(255, 255, 255, 0.5) 100%); */
   width: 100%;
   position: relative;
+  height: 3.5px;
 }
 
 
@@ -178,26 +208,24 @@ button:focus{
   -webkit-appearance: none;
   margin-top: -5px;
   background: #ff1100;
-  /* box-shadow: -40rem 0 0rem 40rem #f11000; */
 }
 #rangeSeeker:focus::-webkit-slider-runnable-track {
   /* background: #aaa; */
 }
 #rangeSeeker::-moz-range-track {
   width: 100%;
-  height: 8.4px;
+  height: 0px;
   cursor: pointer;
   animate: 0.2s;
-  background: #ff1100;
-  border-radius: 1.3px;
+  border-radius: 10.3px;
 }
 #rangeSeeker::-moz-range-thumb {
-  height: 36px;
-  width: 16px;
-  border-radius: 3px;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
   background: #ff1100;
-  box-shadow: -100vh 0 0 #ff1100;
-  cursor: pointer;
+  border: 0;
+  cursor: w-resize;
 } 
 
 
@@ -206,19 +234,37 @@ button:focus{
 
 @media only screen and (min-width : 1030px){
  #mainVid{
-   max-height: 70vh;
+   max-height: 31rem;
  }
  .feed figure,
  .feed .ads{
-  height: 10rem;
+  height: 7rem;
   background: #fff;
 }
 #rangeSeeker{
   overflow: hidden;
 }
 #controls{
-  background: linear-gradient(to bottom , rgba(0, 0, 0, 0.3), rgba(0, 0, 0, .5) );
+  background: linear-gradient(to bottom , rgba(0, 0, 0, 0) 0%, rgba(0,0,0,.6) 89%, rgba(0, 0, 0, .9) );
 
 }
 
 }
+
+@media only screen and (min-width : 1400px){
+  #mainVid{
+    max-height: 34rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+

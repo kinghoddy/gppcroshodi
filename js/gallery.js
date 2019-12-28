@@ -1,4 +1,51 @@
 var src = null;
+var Layout = {
+  video : {
+    Aplay : ()=>(
+      `    <div class="container-fluid px-lg-4" id="Aplay">
+      <div class="row py-lg-4">
+        <div id="mainVidCon" class="col-lg-8 ">
+          <div class="movieCon d-flex">
+            <video id="mainVid" autoplay  class="img-fluid">Can't play video</video>
+             <div id="controls">
+            
+            </div> 
+          </div>
+          <div class="description">
+          </div>
+        </div>
+        <div class="col-lg-4  feed py-4 py-lg-0 ">
+
+        </div>
+      </div>
+    </div> `
+    ),
+    initLayout : ()=>(
+      `    <div class="container-fluid py-lg-4 px-lg-5" id="initLayout">
+      <div class="row">
+          <div class="col-lg-8">
+               <div class="row">
+                 <div class="col" id="videoCarousel">
+                
+                 </div>
+               </div>
+               <div class="row mt-2">
+                 <div class="col feed">
+                 </div>
+               </div>
+               <div class="row mt-2">
+                 
+               </div>
+          </div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+  </div>`
+    )
+    
+  }
+}
 var sources = {
   img: [
     "../img/carol19/carol-pot.jpg",
@@ -50,7 +97,7 @@ const carouselItem = type => {
   } else {
     for (var i = 0; i < sources.vid.length; i++) {
       value += ` <div class="carousel-item">
-                          <video src="${getSrc("vid")}" muted autoplay></video>
+                          <video src="${getSrc("vid")}" muted ></video>
                        </div>`;
     }
   }
@@ -70,7 +117,7 @@ const miniCarouselItem = type => {
     }
   } else {
     value = ` <div class="carousel-item active">
-                       <video src="${getSrc("vid")}" autoplay muted></video>
+                       <video src="${getSrc("vid")}"  muted></video>
                     </div>`;
     for (var i = 0; i < sources.vid.length; i++) {
       value += ` <div class="carousel-item">
@@ -145,7 +192,7 @@ var fragment = null;
 
 function navigate() {
   document.documentElement.scrollTop = 0;
-  mainVid.pause();
+  // mainVid.pause();
   fragment = location.hash.substr(1);
   nest.innerHTML = fragment;
   var links = document.querySelectorAll("#category .btn");
@@ -169,40 +216,45 @@ function navigate() {
       cur.classList.add("d-none");
     }
   });
+
+  // load component script
+
+    if(fragment == 'photos'){
+        scripts.photos()
+      }else if(fragment == 'videos'){
+        scripts.videos()
+      }else if(fragment == 'albums'){
+        scripts.albums()
+    }else{
+      console.log('script not available');
+    }
+
+   
 }
 function playback(target, cap) {
+  var obj = {
+    target : target,
+    cap : cap
+  }  
+  var qString = Object.keys(obj).map(keys => keys + '=' +obj[keys]).join('&');
+  location.search= qString;
+  c
   document.documentElement.scrollTop = 0;
-  var vidSec = document.getElementById("videos"),
-    video = document.querySelector(" #mainVid"),
-    caption = document.querySelector("#mainVidCon .description"),
-    feed = document.querySelector(".feed"),
-    vidCon = document.getElementById("mainVidCon");
-  vidSec.classList.add("toggled");
-  if (vidSec.getAttribute("class").indexOf("toggled") > -1) {
-    vidCon.classList.remove("d-none");
-    vidCon.classList.add("col-lg-8");
-    feed.classList.remove("col-12");
-    feed.classList.add("col-lg-4");
-    video.src = target;
-    caption.innerHTML = cap;
-  } else {
-    vidCon.classList.add("d-none");
-    vidCon.classList.remove("col-lg-8");
-    feed.classList.add("col-12");
-    feed.classList.remove("col-lg-4");
-    video.src = null;
-  }
-  controls.classList.remove("active");
-  document.querySelector(".playBtn").innerHTML = '   <i class="material-icons">pause</i> ';
+  var  video = document.querySelector(" #mainVid"),
+    caption = document.querySelector(" .description");
+    video.src = location.search.substr(1);
+    controls.classList.remove("active");
+      document.querySelector(".playBtn").innerHTML = '   <i class="material-icons">pause</i> ';
+      caption.innerHTML = cap;
 }
 
 function mediaFeed() {
   var feed = document.querySelector(".feed"),
     vidFeed = [];
   for (var i = 0; i < sources.video.length; i++) {
-    var el = `   <figure class="row p-2 px-4" data-target="${sources.video[i].src}" data-des="${sources.video[i].des}">
-      <video src="${sources.video[i].src}" class="col-3"></video>
-      <figcaption class="col-9">${sources.video[i].des}</figcaption>
+    var el = `   <figure class="row mb-2 px-2" data-target="${sources.video[i].src}" data-des="${sources.video[i].des}">
+      <video src="${sources.video[i].src}" class="p-0 col-5"></video>
+      <figcaption class="col-7 px-2 ">${sources.video[i].des}</figcaption>
     </figure>`;
     vidFeed.push(el);
   }
@@ -214,19 +266,23 @@ function contoller() {
     mainVid = document.getElementById("mainVid");
   seekSlider = document.getElementById("rangeSeeker");
   playBtn.addEventListener("click", playPause);
+   seekSlider.value = 0;
   seekSlider.addEventListener("change", () => {
     vidSeek();
-    console.log(seekSlider.value);
     seekSliderBg(seekSlider.value);
   });
+  var val = false
   seekSlider.addEventListener("mousedown", () => {
-    mainVid.pause();
+    seekSliderBg(seekSlider.value);
+    val = true
   });
   seekSlider.addEventListener("mousemove", event => {
+    if(val) mainVid.pause();
     seekSliderBg(seekSlider.value);
   });
   seekSlider.addEventListener("mouseup", () => {
     mainVid.play();
+    val = false
   });
   mainVid.addEventListener("timeupdate", () => {
     var nt = mainVid.currentTime * (100 / mainVid.duration);
@@ -270,16 +326,16 @@ function contoller() {
     seekSlider.style.background =
       "linear-gradient(to right, #f21 0%, #f21 " +
       val +
-      "%, rgba(255,255,255, .5) " +
+      "%, rgba(255,255,255, .7) " +
       val +
-      "%,  rgba(255,255,255, .2)  100%)";
+      "%,  rgba(255,255,255, .3)  100%)";
   }
 }
 
 function displayControls(){
-    var mobileCtrl = `<div class="control-dom"> <button class=" playBtn"> <i class="material-icons">pause</i> </button> <div class="bottom text-white container-fluid"> <div class="row text-center align-items-center"> <div class="col-4 col-lg-2 "> <span id="curTime" class="px-1 "></span> / <span id="durTime" class="px-1 "></span> </div> <div class="col-6 col-lg-9 px-0 pb-2"> <input type="range" min="0" max="100" step="1" id="rangeSeeker"> </div> <div class="col-2 col-lg-1 px-2"> <button id="volumeBtn"> <i class="material-icons">fullscreen</i> </button> </div> </div> </div> <style> .playBtn{ font-size: 4rem !important; } .bottom{ padding: .5rem .5rem } #rangeSeeker{ height: 2.5px; } </style> </div>
+    var mobileCtrl = `<div class="control-dom"> <button class=" playBtn"> <i class="material-icons">pause</i> </button> <div class="bottom text-white container-fluid"> <div class="row text-center align-items-center"> <div class="col-4 col-lg-2 "> <span id="curTime" class="px-1 "></span> / <span id="durTime" class="px-1 "></span> </div> <div class="col-6 col-lg-9 px-0 pb-2"> <input type="range" min="0" value="0" max="100" step="1" id="rangeSeeker"> </div> <div class="col-2 col-lg-1 px-2"> <button id="volumeBtn"> <i class="material-icons">fullscreen</i> </button> </div> </div> </div> <style> .playBtn{ font-size: 4rem !important; } .bottom{ padding: .5rem .5rem } #rangeSeeker{ height: 2.5px; } </style> </div>
     `,
-    desktopCtrl = `<style> .bottom { padding: 0 .5rem .3rem; } #btnNext{ font-size: 1.7rem; } .playBtn { font-size: 1.9rem !important } @media only screen and (min-width: 760px) { .playBtn { font-size: 1.2rem } } </style> <div class="bottom text-white container-fluid"> <div class="row "> <div class=" col "> <input type="range" min="0" max="100" step="1" id="rangeSeeker"> </div> </div> <div class="row align-items-center justify-content-between"> <div class="col align-items-center d-flex"> <button class=" playBtn px-sm-4"> <i class="material-icons">play_arrow</i> </button> <button id="btnNext" class="pr-2"> <i class="material-icons" >skip_next</i> </button> <button id="volumeBtn" class="pr-3"> <i class="material-icons" >volume_up</i> </button> <span id="curTime" class="px-1 font-weight-light "></span> / <span id="durTime" class="px-1 font-weight-light" ></span> </div> <div class="col d-flex align-items-center "> <button id="pInP" class="ml-auto pr-2"> <i class="material-icons">picture_in_picture_alt</i> </button> <button id="pInP" class="pr-2 d-none d-md-flex"> <i class="material-icons">crop_landscape</i> </button> <button id="fullScreen" class="pr-2"> <i class="material-icons">fullscreen</i> </button> </div> </div> </div>`;
+    desktopCtrl = `<style> .bottom { padding: 0 .5rem .3rem; } #btnNext{ font-size: 1.7rem; } .playBtn { font-size: 1.9rem !important } @media only screen and (min-width: 760px) { .playBtn { font-size: 1.2rem } } </style> <div class="bottom text-white container-fluid"> <div class="row "> <div class=" col "> <input type="range" min="0" max="100" step="1" value="0" id="rangeSeeker"> </div> </div> <div class="row align-items-center justify-content-between"> <div class="col align-items-center d-flex"> <button class=" playBtn px-sm-4"> <i class="material-icons">play_arrow</i> </button> <button id="btnNext" class="pr-2"> <i class="material-icons" >skip_next</i> </button> <button id="volumeBtn" class="pr-3"> <i class="material-icons" >volume_up</i> </button> <span id="curTime" class="px-1 font-weight-light "></span> / <span id="durTime" class="px-1 font-weight-light" ></span> </div> <div class="col d-flex align-items-center "> <button id="pInP" class="ml-auto pr-2"> <i class="material-icons">picture_in_picture_alt</i> </button> <button id="pInP" class="pr-2 d-none d-md-flex"> <i class="material-icons">crop_landscape</i> </button> <button id="fullScreen" class="pr-2"> <i class="material-icons">fullscreen</i> </button> </div> </div> </div>`;
     if(window.innerWidth > 1024){
         controls.innerHTML = desktopCtrl
     }else{
@@ -287,20 +343,38 @@ function displayControls(){
     }
 }
 
+var scripts = {
+  albums : ()=>{
+    document.querySelector(".con").innerHTML = carousel("img");
+    document.querySelector(".imgcon").innerHTML = carousel("miniImg");
+    document.querySelector(".vidcon").innerHTML = carousel("miniVid");
+  },
+  photos : ()=>{
 
-(function init() {
-  navigate();
-  document.querySelector(".con").innerHTML = carousel("img");
-  document.querySelector(".imgcon").innerHTML = carousel("miniImg");
-  document.querySelector(".vidcon").innerHTML = carousel("miniVid");
-  window.addEventListener("hashchange", event => {
-    event.preventDefault();
-    navigate();
-  });
+  },
+  videos: ()=>{
+    const vidSec = document.getElementById('videos');
+    if(!location.search){
+      vidSec.innerHTML = Layout.video.initLayout();
+      mediaFeed();
+    }else{
+      const p = new Promise((resolve,reject)=>{
+        if(Layout.video.Aplay){
+          resolve(Layout.video.Aplay);
+        }else{
+          reject('Cant be loaded')
+        }
+      })
+      p.then((data)=>{
+        vidSec.innerHTML = data
+        displayControls()
+        // playback(location.search, 'hello');
+        contoller();
+      })
 
-  mediaFeed();
-
-  // playback call
+    
+    }
+      // playback call
   var figures = document.querySelectorAll(".feed figure");
   figures.forEach(cur => {
     cur.addEventListener("click", () => {
@@ -308,11 +382,28 @@ function displayControls(){
         cur.classList.remove("active");
       });
       cur.classList.add("active");
-
-      playback(cur.getAttribute("data-target"), cur.getAttribute("data-des"));
+      playback(cur.getAttribute("data-target"), cur.getAttribute("data-des"), true);
     });
   });
   // end of playback call
-  displayControls()
-  contoller();
+
+  }
+};
+
+(function init() {
+  navigate();
+
+  window.addEventListener("hashchange", event => {
+    event.preventDefault();
+    navigate();
+  });
 })();
+
+
+/*
+      <div class="col-4 p-2">
+                         <div class="feed_sm">
+                
+                         </div>
+                     </div>
+*/
